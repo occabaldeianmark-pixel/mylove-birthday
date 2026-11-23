@@ -1,0 +1,369 @@
+
+You sent
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Jomalyn ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Georgia, serif;
+    color: white;
+    text-align: center;
+    background:
+      linear-gradient(rgba(60,0,35,.48),rgba(60,0,35,.68)),
+      radial-gradient(circle at 20% 20%, #f58ab5, transparent 40%),
+      linear-gradient(135deg,#7d164d,#c32b78,#48102e);
+    overflow-x: hidden;
+}
+
+.container {
+    min-height: 100vh;
+    padding: 65px 18px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-weight: normal;
+    font-style: italic;
+    text-shadow: 0 3px 15px #5d123b;
+    margin-bottom: 15px;
+}
+
+.subtitle {
+    font-size: 1.15rem;
+    margin-bottom: 55px;
+}
+
+.objects {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 35px;
+    max-width: 850px;
+}
+
+.object {
+    border: none;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    transition: .35s;
+    width: 190px;
+}
+
+.object:hover {
+    transform: translateY(-12px) scale(1.07);
+}
+
+.object .picture {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 165px;
+    font-size: 95px;
+    filter: drop-shadow(0 8px 12px #260017);
+}
+
+.object p {
+    font-size: 1.15rem;
+    margin-top: 10px;
+}
+
+.hint {
+    margin-top: 55px;
+    font-size: .9rem;
+    opacity: .85;
+}
+
+/* MODAL */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(20,0,15,.85);
+    z-index: 10;
+    justify-content: center;
+    align-items: center;
+    padding: 18px;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background: #fff0f6;
+    color: #761b49;
+    border-radius: 22px;
+    padding: 30px 22px;
+    max-width: 550px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 0 35px #f48ab9;
+    animation: appear .4s ease;
+}
+
+@keyframes appear {
+    from {transform: scale(.7); opacity: 0;}
+    to {transform: scale(1); opacity: 1;}
+}
+
+.close {
+    position: absolute;
+    right: 17px;
+    top: 10px;
+    border: none;
+    background: transparent;
+    font-size: 30px;
+    color: #a62a65;
+    cursor: pointer;
+}
+
+.modal h2 {
+    font-size: 2rem;
+    margin: 15px 0;
+}
+
+.modal p {
+    line-height: 1.8;
+    margin: 12px 0;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.gallery img {
+    width: 100%;
+    height: 175px;
+    object-fit: cover;
+    border-radius: 13px;
+    background: #f7c1d6;
+}
+
+.primary {
+    background: #c13d78;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 25px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.primary:hover {
+    background: #922353;
+}
+
+.cake {
+    font-size: 100px;
+    margin: 15px;
+}
+
+.heart {
+    color: #d83f7e;
+    font-size: 25px;
+}
+
+footer {
+    margin-top: 50px;
+    font-size: .85rem;
+    opacity: .8;
+}
+
+@media(max-width: 500px) {
+    .objects { gap: 20px; }
+    .object { width: 135px; }
+    .object .picture { height: 125px; font-size: 75px; }
+    .object p { font-size: 1rem; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Happy Birthday, Baby!</h1>
+
+    <p class="subtitle">
+        A special surprise made with love for Jomalyn ❤️
+        <br>Choose one to get started!
+    </p>
+
+    <div class="objects">
+
+        <!-- FLOWERS -->
+        <button class="object" onclick="openFlowers()">
+            <div class="picture">💐</div>
+            <p>🌷 Flowers for you</p>
+        </button>
+
+        <!-- CAKE -->
+        <button class="object" onclick="openCake()">
+            <div class="picture">🎂</div>
+            <p>🎂 Birthday cake</p>
+        </button>
+
+        <!-- LOVE LETTER -->
+        <button class="object" onclick="openLetter()">
+            <div class="picture">💌</div>
+            <p>💗 Letter just for you</p>
+        </button>
+
+    </div>
+
+    <p class="hint">
+        Made with all my love, just for you. ❤️
+    </p>
+
+    <footer>
+        Forever yours, with love ❤️
+    </footer>
+
+</div>
+
+<!-- POPUP -->
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <button class="close" onclick="closeModal()">×</button>
+        <div id="modalBody"></div>
+    </div>
+</div>
+
+<script>
+
+const modal = document.getElementById("modal");
+const modalBody = document.getElementById("modalBody");
+
+function showModal(content) {
+    modalBody.innerHTML = content;
+    modal.classList.add("show");
+}
+
+function closeModal() {
+    modal.classList.remove("show");
+}
+
+// FLOWER GALLERY
+function openFlowers() {
+    showModal(`
+        <h2>Flowers for you, my love 🌷</h2>
+        <p>
+            Every flower reminds me of your beauty.
+            These memories are some of my favorites. ❤️
+        </p>
+
+        <div class="gallery">
+            <img src="pic1.jpg" alt="Our memory 1">
+            <img src="pic2.jpg" alt="Our memory 2">
+            <img src="pic3.jpg" alt="Our memory 3">
+            <img src="pic4.jpg" alt="Our memory 4">
+        </div>
+
+        <p class="heart">I love you, Jomalyn! 💗</p>
+    `);
+}
+
+// BIRTHDAY CAKE
+function openCake() {
+    showModal(`
+        <h2>Happy Birthday, Baby! 🎂</h2>
+        <div class="cake">🎂</div>
+
+        <p>
+            Today is your special day!
+            I wish you happiness, good health,
+            endless blessings and all the love
+            your heart deserves.
+        </p>
+
+        <p><b>Make a wish, my love! ✨</b></p>
+
+        <button class="primary" onclick="blowCandles()">
+            Blow the candles 🕯️
+        </button>
+
+        <p id="cakeMessage"></p>
+    `);
+}
+
+function blowCandles() {
+    document.getElementById("cakeMessage").innerHTML =
+    "🎉🎉 YAY! Your wish is on its way! I love you so much, Jomalyn! ❤️";
+}
+
+// LOVE LETTER
+function openLetter() {
+    showModal(`
+        <h2>To My Dearest Jomalyn 💌</h2>
+
+        <p>My love,</p>
+
+        <p>
+            Happy Birthday to the most special person
+            in my life. ❤️
+        </p>
+
+        <p>
+            I want you to know how grateful I am
+            to have you. You make my days brighter
+            and my life more beautiful.
+        </p>
+
+        <p>
+            Even if life isn't always perfect,
+            I promise to keep choosing you,
+            supporting you, and loving you.
+        </p>
+
+        <p>
+            May all your dreams come true.
+            You deserve every beautiful thing
+            this world has to offer.
+        </p>
+
+        <p>
+            Happy Birthday, my baby!
+            I love you always and forever. ❤️
+        </p>
+
+        <p class="heart">
+            Forever yours. 💗
+        </p>
+    `);
+}
+
+// CLOSE WHEN CLICKING OUTSIDE
+modal.addEventListener("click", function(event) {
+    if(event.target === modal) {
+        closeModal();
+    }
+});
+
+</script>
+
+</body>
+</html>
